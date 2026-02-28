@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monstar · web developer</title>
+  <!-- Font Awesome 5 for icons (free) -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+  <!-- Google Fonts: Inter & Space Grotesk for modern look -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,800&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #faf9fe;
+      color: #1e1b2b;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* header / navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 0;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-icon {
+      background: #1e1b2b;
+      color: #f6c2ff;
+      width: 48px;
+      height: 48px;
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: 700;
+      box-shadow: 0 10px 25px -8px #b48aff;
+    }
+
+    .logo-text {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(145deg, #2d1f4b, #623aa2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .logo-text span {
+      background: linear-gradient(145deg, #bc7af9, #a34cfe);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 600;
+    }
+
+    .login-area {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .mock-login {
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(4px);
+      padding: 0.6rem 1.4rem;
+      border-radius: 60px;
+      border: 1px solid #ddd9ff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .mock-login .cred {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .mock-login i {
+      color: #7a4bcb;
+      width: 18px;
+      font-size: 0.9rem;
+    }
+    .mock-login .divider {
+      width: 1px;
+      height: 24px;
+      background: #d2c7ff;
+      margin: 0 4px;
+    }
+    .badge {
+      background: #1e1b2b;
+      color: #f0e4ff;
+      padding: 0.25rem 0.8rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+
+    /* HERO section */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      padding: 3rem 0 4rem 0;
+    }
+
+    .hero-left {
+      flex: 1 1 400px;
+    }
+
+    .hero-left h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      background: linear-gradient(160deg, #1f0b3a, #512e8e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-left .name-badge {
+      display: inline-block;
+      background: #efe6ff;
+      border-radius: 60px;
+      padding: 0.3rem 1.2rem 0.3rem 1rem;
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: #371d66;
+      margin-bottom: 1rem;
+      border: 1px solid #cebbff;
+    }
+    .hero-left .name-badge i {
+      margin-right: 8px;
+      color: #a368fc;
+    }
+
+    .hero-left p {
+      font-size: 1.2rem;
+      color: #3c3652;
+      max-width: 550px;
+      margin-bottom: 2.2rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: #1e1b2b;
+      color: white;
+      border: none;
+      padding: 1rem 2.4rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      box-shadow: 0 12px 22px -10px #2c1c4e;
+      transition: 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-primary:hover {
+      background: #342b4a;
+      transform: scale(1.02);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #bb9eff;
+      color: #2c1d4b;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .btn-outline:hover {
+      background: #f3edff;
+      border-color: #9f7cf4;
+    }
+
+    .hero-right {
+      flex: 1 1 300px;
+      background: rgba(222, 204, 255, 0.3);
+      backdrop-filter: blur(10px);
+      border-radius: 60% 40% 50% 50% / 40% 50% 50% 60%;
+      padding: 2.5rem 2.5rem;
+      border: 2px solid white;
+      box-shadow: 0 25px 45px -15px #b28aff;
+      min-width: 280px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .devicon-bubble {
+      font-size: 4rem;
+      background: #fff1f9;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+      box-shadow: 0 15px 20px -10px #c0a0ff;
+      border: 3px solid white;
+    }
+    .devicon-bubble i {
+      font-size: 4rem;
+      color: #412d73;
+    }
+    .hero-right h3 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      background: linear-gradient(145deg, #322159, #6f43c2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+    .hero-right .cred-demo {
+      background: #ece3ff;
+      border-radius: 40px;
+      padding: 0.8rem 1.5rem;
+      width: 100%;
+      margin-top: 0.8rem;
+      font-family: 'Space Grotesk', monospace;
+      font-size: 1rem;
+      border: 1px dashed #956efb;
+    }
+    .hero-right .cred-demo p {
+      margin: 4px 0;
+    }
+    .hero-right .cred-demo i {
+      width: 24px;
+      color: #623aa2;
+    }
+
+    /* features / services */
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #281b42;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .section-title span {
+      background: linear-gradient(145deg, #a370f0, #623aa2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin: 4rem 0;
+    }
+    .feature-card {
+      background: white;
+      border-radius: 2.5rem 1.5rem 2.5rem 1.5rem;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 20px 35px -10px #ded1ff;
+      transition: 0.2s;
+      border: 1px solid #f1ebff;
+    }
+    .feature-card:hover {
+      transform: translateY(-8px);
+      border-color: #cbb5ff;
+    }
+    .feature-icon {
+      font-size: 2.3rem;
+      background: #efe4ff;
+      width: 70px;
+      height: 70px;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      color: #3d256b;
+    }
+    .feature-card h3 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .feature-card p {
+      color: #43405a;
+    }
+
+    /* login panel preview */
+    .login-preview {
+      background: #1d142f;
+      border-radius: 50px 50px 30px 30px;
+      padding: 2.5rem 2rem;
+      color: white;
+      margin: 3rem 0 4rem;
+      background-image: radial-gradient(circle at 20% 30%, #402d65, #130b22);
+      box-shadow: 0 30px 35px -12px #452e80;
+    }
+    .preview-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-around;
+      gap: 2rem;
+    }
+    .login-creds-card {
+      background: rgba(255,255,255,0.07);
+      backdrop-filter: blur(8px);
+      border-radius: 40px;
+      padding: 2rem;
+      min-width: 260px;
+      border: 1px solid #8d75cf;
+    }
+    .login-creds-card .field {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      background: #ffffff14;
+      padding: 0.9rem 1.5rem;
+      border-radius: 70px;
+      margin: 1rem 0;
+      border: 1px solid #a182ec;
+    }
+    .login-creds-card .field i {
+      color: #dbbaff;
+      width: 24px;
+    }
+    .login-creds-card .field span {
+      font-family: 'Space Grotesk', monospace;
+      font-weight: 600;
+      font-size: 1.2rem;
+      letter-spacing: 0.5px;
+    }
+    .lock-badge {
+      background: #f6c2ff40;
+      padding: 0.5rem 1.2rem;
+      border-radius: 50px;
+      font-weight: 500;
+      display: inline-block;
+      margin-top: 1rem;
+    }
+
+    .preview-text {
+      max-width: 400px;
+    }
+    .preview-text h2 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+    }
+    .preview-text .monster-highlight {
+      color: #f0c4ff;
+      background: #342357;
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      display: inline-block;
+    }
+
+    /* CTA final */
+    .final-cta {
+      text-align: center;
+      background: #ffffffd0;
+      backdrop-filter: blur(4px);
+      border-radius: 100px 20px 100px 20px;
+      padding: 3rem 2rem;
+      margin: 4rem 0;
+      border: 2px solid white;
+      box-shadow: 0 10px 30px #c3adff;
+    }
+    .final-cta h2 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      background: linear-gradient(145deg, #281b48, #6d46b5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      color: #4d4370;
+      border-top: 2px solid #e2d6ff;
+    }
+
+    /* interactive demo */
+    #demo-message {
+      transition: 0.2s;
+      font-weight: 600;
+      background: #eddeff;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      color: #341f5a;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- header / navigation -->
+  <nav class="navbar">
+    <div class="logo">
+      <div class="logo-icon">✦</div>
+      <div class="logo-text">mon<span>star</span></div>
+    </div>
+    <div class="login-area">
+      <div class="mock-login">
+        <span class="cred"><i class="fas fa-user"></i> <strong>monstar</strong></span>
+        <span class="divider"></span>
+        <span class="cred"><i class="fas fa-lock"></i> <span>•••••••12</span></span>
+        <span class="badge"><i class="fas fa-check-circle"></i> dev access</span>
+      </div>
+      <button class="btn-outline" style="padding:0.7rem 1.8rem;" id="showCredBtn"><i class="fas fa-mask"></i> hint</button>
+    </div>
+  </nav>
+
+  <!-- hero -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="name-badge"><i class="fas fa-crown"></i> monsatar · web developer</div>
+      <h1>Build your digital <br>presence with <span>✦ Monstar</span></h1>
+      <p>Modern, fast and responsive websites. Your vision, coded with personality. Log in with team credentials to enter the dev zone.</p>
+      <div class="cta-buttons">
+        <button class="btn-primary" id="scrollToLogin"><i class="fas fa-arrow-down"></i> see login panel</button>
+        <button class="btn-outline" id="copyCredBtn"><i class="far fa-copy"></i> copy pass</button>
+      </div>
+      <div id="demo-message" style="margin-top: 2rem; display: inline-block;"></div>
+    </div>
+    <div class="hero-right">
+      <div class="devicon-bubble"><i class="fas fa-code"></i></div>
+      <h3>monsatar</h3>
+      <div class="cred-demo">
+        <p><i class="fas fa-id-card"></i> login: <strong>monstar</strong></p>
+        <p><i class="fas fa-key"></i> pass: <strong>monster12</strong></p>
+      </div>
+      <p style="margin-top: 1rem; font-size:0.9rem;"><i class="fas fa-shield-alt"></i> role: master dev</p>
+    </div>
+  </section>
+
+  <!-- features / what monstar builds -->
+  <h2 class="section-title">crafted <span>by monstar</span> ✦</h2>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+      <h3>lightning speed</h3>
+      <p>Optimized performance, fast load times, and smooth interactions — just like a monster's energy.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+      <h3>responsive</h3>
+      <p>Perfect on any device: from mobile to 4K. Your site will look stellar everywhere.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fas fa-laptop-code"></i></div>
+      <h3>html/css/js</h3>
+      <p>Pure code, no bloat. Clean handcrafted markup with interactive elements.</p>
+    </div>
+  </div>
+
+  <!-- login preview panel (monsatar access) -->
+  <div class="login-preview" id="loginPanel">
+    <div class="preview-inner">
+      <div class="login-creds-card">
+        <h3 style="color:#f0d1ff;"><i class="fas fa-terminal"></i> dev login</h3>
+        <div class="field"><i class="fas fa-user-circle"></i> <span>monstar</span></div>
+        <div class="field"><i class="fas fa-fingerprint"></i> <span>monster12</span></div>
+        <div class="lock-badge"><i class="fas fa-check"></i> credentials active</div>
+        <p style="margin-top:1.5rem; font-size:0.8rem; opacity:0.7;">* demo only, no data stored</p>
+      </div>
+      <div class="preview-text">
+        <h2>monsatar’s <span class="monster-highlight">inner sanctum</span></h2>
+        <p style="color:#cfc1ff;">Use the login: <strong>monstar</strong> & password <strong>monster12</strong> to enter the protected staging area (concept).</p>
+        <button class="btn-primary" style="background:#ad94ff; color:#1d103b; margin-top:1rem;" id="pretendLogin"><i class="fas fa-sign-in-alt"></i> simulate login</button>
+        <p id="loginFeedback" style="margin-top: 1rem; color:#b7f7b7;"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- final call to action -->
+  <div class="final-cta">
+    <h2>monstar ● ready to launch</h2>
+    <p style="font-size:1.3rem; margin:1rem 0;">grab the credentials: <strong>monstar</strong> / <strong>monster12</strong></p>
+    <button class="btn-primary" id="copyAllBtn"><i class="fas fa-copy"></i> copy login:pass</button>
+    <span style="display:inline-block; margin-left:1.5rem;"><i class="fas fa-smile-wink"></i> by monsatar</span>
+  </div>
+
+  <footer>
+    <p><i class="far fa-registered"></i> monstar web dev · 2025 · credentials for preview: monstar / monster12</p>
+  </footer>
+</div>
+
+<!-- javascript for interactions -->
+<script>
+  (function() {
+    // credentials
+    const credUser = "monstar";
+    const credPass = "monster12";
+
+    // elements
+    const copyCredBtn = document.getElementById('copyCredBtn');
+    const copyAllBtn = document.getElementById('copyAllBtn');
+    const showCredBtn = document.getElementById('showCredBtn');
+    const demoMsg = document.getElementById('demo-message');
+    const pretendLoginBtn = document.getElementById('pretendLogin');
+    const loginFeedback = document.getElementById('loginFeedback');
+    const scrollToLogin = document.getElementById('scrollToLogin');
+    const loginPanel = document.getElementById('loginPanel');
+
+    // helper: copy to clipboard
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        showTemporaryMessage('✅ credentials copied!');
+      }).catch(() => {
+        alert('Press Ctrl+C (CMD+C) to copy: ' + text);
+      });
+    }
+
+    function showTemporaryMessage(msg) {
+      if (demoMsg) {
+        demoMsg.textContent = msg;
+        setTimeout(() => {
+          demoMsg.textContent = '';
+        }, 2000);
+      }
+    }
+
+    // copy login only via hint button (actually shows both)
+    if (showCredBtn) {
+      showCredBtn.addEventListener('click', () => {
+        showTemporaryMessage(`👾 use monstar / monster12`);
+      });
+    }
+
+    // copy login:pass (button "copy pass")
+    if (copyCredBtn) {
+      copyCredBtn.addEventListener('click', () => {
+        copyToClipboard(`monstar monster12`);
+      });
+    }
+
+    // copy both (final cta)
+    if (copyAllBtn) {
+      copyAllBtn.addEventListener('click', () => {
+        copyToClipboard(`monstar / monster12`);
+      });
+    }
+
+    // pretend login simulation
+    if (pretendLoginBtn) {
+      pretendLoginBtn.addEventListener('click', () => {
+        if (loginFeedback) {
+          loginFeedback.innerHTML = '🔓 welcome, monstar! (simulated developer access)';
+          setTimeout(() => {
+            loginFeedback.innerHTML = '';
+          }, 3500);
+        }
+      });
+    }
+
+    // scroll to login panel
+    if (scrollToLogin && loginPanel) {
+      scrollToLogin.addEventListener('click', (e) => {
+        e.preventDefault();
+        loginPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // optional highlight
+        loginPanel.style.transition = 'box-shadow 0.3s';
+        loginPanel.style.boxShadow = '0 0 0 4px #f3c6ff';
+        setTimeout(() => { loginPanel.style.boxShadow = '0 30px 35px -12px #452e80'; }, 800);
+      });
+    }
+
+    // interactive hero-right "copy on click" (for extra)
+    const heroCredDiv = document.querySelector('.hero-right .cred-demo');
+    if (heroCredDiv) {
+      heroCredDiv.addEventListener('click', () => {
+        copyToClipboard(`monstar monster12`);
+      });
+      heroCredDiv.style.cursor = 'pointer';
+      heroCredDiv.title = 'click to copy credentials';
+    }
+  })();
+</script>
+
+<!-- additional micro style for interactive -->
+<style>
+  .hero-right .cred-demo:hover {
+    background: #d7c5ff;
+    transition: 0.2s;
+  }
+  #loginFeedback {
+    min-height: 2rem;
+    font-weight: 500;
+  }
+  .btn-primary, .btn-outline { cursor: pointer; }
+  i.fa, .fas { pointer-events: none; }
+</style>
+</body>
+</html>
